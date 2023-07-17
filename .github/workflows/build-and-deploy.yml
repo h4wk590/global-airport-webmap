@@ -19,7 +19,7 @@ env:
     REGISTRY: "registry.digitalocean.com/ab-prod-reg-01"
     IMAGE_NAME: "airportwebmap"
 
-    jobs:
+jobs:
     build_and_push:
           runs-on: ubuntu-latest
           steps:
@@ -43,7 +43,7 @@ env:
             - name: Push image to DigitalOcean Container Registry
               run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
               
-        deploy:
+    deploy:
           runs-on: ubuntu-latest
           needs: build_and_push
           
