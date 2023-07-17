@@ -20,7 +20,7 @@ env:
     IMAGE_NAME: "airportwebmap"
 
     jobs:
-        build_and_push:
+    build_and_push:
           runs-on: ubuntu-latest
           steps:
             - name: Checkout the repo 
