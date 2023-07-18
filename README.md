@@ -4,12 +4,28 @@
 
 Learning QGIS/GIS basics and web mapping fundamentals.
 
-## Features
+## Map Features
 
 - Dynamic web map using Google Maps baselayer
 - Pan/Zoom within map extent
 - Searchable via class/city/country
 - Displays coordinates and links Wikipedia page to selected airport
+
+## CI/CD Workflow
+
+Upon merge/push on the main branch:
+
+- A new Image is created from html/css/js files that make up the map
+- DigitalOcean API access via `doctl` to push new image to [DigitalOcean Registry](https://www.digitalocean.com/products/container-registry), it purges any old images in the process.
+- New container is built from registry image 
+- SSH into DigitalOcean droplet using Keypairs
+- Script is run to remove old containers and images on the droplet
+- New container is built on the droplet
+
+## Data
+
+- Created with QGIS2Web plugin
+- Airport data from [Natural Earth Data](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/airports/)
 
 ## Local Development
 
