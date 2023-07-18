@@ -1,4 +1,4 @@
-![Github Actions](https://github.com/h4wk590/global-webmap/actions/workflows/build-and-deploy.yml/badge.svg)
+![Github Actions](https://github.com/h4wk590/global-airport-webmap/actions/workflows/build-and-deploy.yml/badge.svg)
 
 # Dynamic Webmap Created With QGIS
 
