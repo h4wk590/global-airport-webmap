@@ -1,3 +1,5 @@
+![Github Actions](https://github.com/h4wk590/global-webmap/actions/workflows/build-and-deploy.yml/badge.svg)
+
 # Dynamic Webmap Created With QGIS
 
 Learning QGIS/GIS basics and web mapping fundamentals.
