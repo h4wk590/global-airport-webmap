@@ -65,10 +65,6 @@ jobs:
                   # Run a new container from a new image
                   docker run -d \
                   --network=web \
-                  --label traefik.port=8080
-                  --label traefik.http.routers.airportwebmap.entrypoints=websecure \
-                  --label traefik.http.routers.airportwebmap.tls.certresolver=letsencrypt \
-                  --label traefik.frontend.rule=Host${{ secrets.TRAEFIK_DOMAIN }} \
                   --restart always \
                   --name $(echo $IMAGE_NAME) \
                   $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
