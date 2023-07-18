@@ -54,7 +54,7 @@ jobs:
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.SSHUSER }}
                 key: ${{ secrets.SSHKEY }}
-                envs: IMAGE_NAME,REGISTRY,{{ secrets.DIGITALOCEAN_ACCESS_TOKEN }},GITHUB_SHA
+                envs: IMAGE_NAME,REGISTRY,{{ secrets.DIGITALOCEAN_ACCESS_TOKEN }},GITHUB_SHA,{{ secrets.TRAEFIK_DOMAIN }}
                 script: |
                   # Login to registry
                   docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
@@ -64,6 +64,11 @@ jobs:
                   docker rm $(echo $IMAGE_NAME)
                   # Run a new container from a new image
                   docker run -d \
+                  --network=web \
+                  -l traefik.port=8080
+                  -l traefik.http.routers.airportwebmap.entrypoints=websecure \
+                  -l traefik.http.routers.airportwebmap.tls.certresolver=letsencrypt \
+                  -l traefik.frontend.rule=Host${{ secrets.TRAEFIK_DOMAIN }} \
                   --restart always \
                   --name $(echo $IMAGE_NAME) \
                   $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
