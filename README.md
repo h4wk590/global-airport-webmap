@@ -4,7 +4,10 @@
 
 View the web map here: https://airportwebmap.aidantech.xyz
 
-Learning QGIS/GIS basics and web mapping fundamentals.
+## About
+
+Mini-Project for dipping my toes into QGIS/GIS web mapping basics.
+I decided to turn it into a CI/CD exercise on top of learning web mapping.
 
 ## Map Features
 
